@@ -11,16 +11,25 @@ import android.widget.Toast;
 import android.content.Intent;
 
 import com.example.amit.whattoeat.R;
+import com.example.amit.whattoeat.controller.TestFetchThread;
+import com.example.amit.whattoeat.controller.YummlySearcher;
+import com.example.amit.whattoeat.entity.Ingredient;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class UserDetails extends ActionBarActivity {
 private Button mNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        new TestFetchThread().start(); //todo delete this, just for testing
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-        mNext = (Button)findViewById(R.id.button);
-        mNext = (Button)findViewById(R.id.button);
+        mNext = (Button) findViewById(R.id.button);
+        mNext = (Button) findViewById(R.id.button);
 
         mNext.setOnClickListener(
                 new View.OnClickListener() {
