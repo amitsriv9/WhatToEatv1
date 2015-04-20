@@ -2,6 +2,7 @@ package com.example.amit.whattoeat.controller;
 
 import com.example.amit.whattoeat.entity.Ingredient;
 import com.example.amit.whattoeat.entity.Recipe;
+import com.example.amit.whattoeat.entity.YummlySearchResult;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,7 @@ public class YummlySearcher {
     private static final String ENDPOINT = "http://api.yummly.com/v1";
     private static final String APPLICATION_ID = "7a7d2bea";
     private static final String API_KEY = "c178a9fb9e73b844dea1ee9fdc3d02ea";
+//    private ServiceResultParser = new YummlyParser();
 
     List<Recipe> results;
 
@@ -30,7 +32,7 @@ public class YummlySearcher {
         this.results = results;
     }
 
-    public List<Recipe> fetchByIngredients(List<Ingredient> ingredients) {
+    public YummlySearchResult fetchByIngredients(List<Ingredient> ingredients, YummlySearchResult result) {
         String call = buildCall(ingredients);
         System.out.println("built call");
         String serviceBack;
@@ -41,7 +43,9 @@ public class YummlySearcher {
             return null;
         }
         System.out.println("got reply");
-        return parseRecipees(serviceBack);
+//        YummlySearchResult result = new YummlySearchResult();
+        new YummlyParser(result).parse(serviceBack);
+        return result;
     }
 
     private String getUrlString(String urlSpec) throws IOException {

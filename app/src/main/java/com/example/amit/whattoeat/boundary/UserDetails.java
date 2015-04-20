@@ -1,6 +1,5 @@
 package com.example.amit.whattoeat.boundary;
 
-import com.example.amit.whattoeat.boundary.AllPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,9 +10,9 @@ import android.widget.Toast;
 import android.content.Intent;
 
 import com.example.amit.whattoeat.R;
-import com.example.amit.whattoeat.controller.TestFetchThread;
-import com.example.amit.whattoeat.controller.YummlySearcher;
+import com.example.amit.whattoeat.controller.YummlyFetchThread;
 import com.example.amit.whattoeat.entity.Ingredient;
+import com.example.amit.whattoeat.entity.YummlySearchResult;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +23,10 @@ private Button mNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        new TestFetchThread().start(); //todo delete this, just for testing
+        List<Ingredient> ingredients = new LinkedList<Ingredient>();
+        ingredients.add(new Ingredient("onion"));
+        YummlySearchResult result = new YummlySearchResult();
+        new YummlyFetchThread(ingredients, result).start(); //todo delete this, just for testing
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
