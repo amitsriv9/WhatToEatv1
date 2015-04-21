@@ -2,6 +2,7 @@ package com.example.amit.whattoeat.controller;
 
 import com.example.amit.whattoeat.entity.Ingredient;
 import com.example.amit.whattoeat.entity.Recipe;
+import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
 
 import java.io.BufferedReader;
@@ -34,6 +35,10 @@ public class YummlySearcher {
 
     public YummlySearchResult fetchByIngredients(List<Ingredient> ingredients, YummlySearchResult result) {
         String call = buildCall(ingredients);
+        return getYummlySearchResult(result, call);
+    }
+
+    private YummlySearchResult getYummlySearchResult(YummlySearchResult result, String call) {
         System.out.println("built call");
         String serviceBack;
         try {
@@ -46,6 +51,17 @@ public class YummlySearcher {
 //        YummlySearchResult result = new YummlySearchResult();
         new YummlyParser(result).parse(serviceBack);
         return result;
+    }
+
+    public YummlySearchResult fetchByRequest(YummlySearchRequest request, YummlySearchResult result){
+        String call;
+        try{
+             call = request.buildCall();
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+        return getYummlySearchResult(result, call);
     }
 
     private String getUrlString(String urlSpec) throws IOException {

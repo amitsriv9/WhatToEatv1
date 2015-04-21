@@ -12,7 +12,9 @@ import android.content.Intent;
 import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.controller.YummlyFetchThread;
 import com.example.amit.whattoeat.entity.Ingredient;
+import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
+import com.example.amit.whattoeat.utilities.Enums;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +28,12 @@ private Button mNext;
         List<Ingredient> ingredients = new LinkedList<Ingredient>();
         ingredients.add(new Ingredient("onion"));
         YummlySearchResult result = new YummlySearchResult();
-        new YummlyFetchThread(ingredients, result).start(); //todo delete this, just for testing
+
+        YummlySearchRequest request = new YummlySearchRequest();
+        request.addIngredient(new Ingredient("onion"));
+        request.addCourse(Enums.Course.SOUPS);
+
+        new YummlyFetchThread(request, result).start(); //todo delete this, just for testing
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
