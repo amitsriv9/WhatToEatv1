@@ -11,10 +11,10 @@ import java.util.List;
 /**
  * Created by Jun on 4/20/2015.
  */
-public class YummlyParser implements ServiceResultParser {
+public class YummlySearchParser implements ServiceResultParser {
     private YummlySearchResult yummlyResult;
 
-    public YummlyParser(YummlySearchResult result){
+    public YummlySearchParser(YummlySearchResult result){
         yummlyResult = result;
     }
     @Override

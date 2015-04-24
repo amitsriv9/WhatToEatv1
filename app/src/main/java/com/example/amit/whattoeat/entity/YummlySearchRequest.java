@@ -1,7 +1,7 @@
 package com.example.amit.whattoeat.entity;
 
 import com.example.amit.whattoeat.utilities.Enums.*;
-
+import com.example.amit.whattoeat.utilities.YummlyCredentials;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,12 +11,14 @@ import java.util.List;
  */
 public class YummlySearchRequest {
 
-    private static String ENDPOINT = "http://api.yummly.com/v1";
-    private static String APPLICATION_ID = "7a7d2bea";
-    private static String API_KEY = "c178a9fb9e73b844dea1ee9fdc3d02ea";
+//    private static String ENDPOINT = "http://api.yummly.com/v1";
+//    private static String APPLICATION_ID = "7a7d2bea";
+//    private static String API_KEY = "c178a9fb9e73b844dea1ee9fdc3d02ea";
 
     private static String ALLERGY_SIGNATURE = "&allowedAllergy[]=";
     private static String COURSE_SIGNATURE = "&allowedCourse[]=";
+    private static String PAGE_SIGNATURE = "&start=";
+    private static int DEFAULT_PAGE_SIZE = 10;
 //    private static String
 
     private String call = null;
@@ -25,6 +27,20 @@ public class YummlySearchRequest {
     List<Allergy> allergies;
     List<Course> courses;
 
+    int pageIndex = 0;
+
+    public void nextPage(){
+        pageIndex++;
+        call = null;
+    }
+
+    public void requestPage(int i){
+        if(i < 0) {return;}//todo throw exceptions
+        else{
+            pageIndex = i;
+            call = null;
+        }
+    }
     public void addIngredient(Ingredient in){
         ingredients.add(in);
         call = null;
@@ -61,14 +77,22 @@ public class YummlySearchRequest {
         buildIngredients(sb);
         buildAllergies(sb);
         buildCourse(sb);
+        buildPageIndex(sb);
         return sb.toString();
     }
 
+    private void buildPageIndex(StringBuffer sb) {
+        if(pageIndex == 0) {return;}
+
+        sb.append(PAGE_SIGNATURE);
+        sb.append(pageIndex * DEFAULT_PAGE_SIZE);
+    }
+
     private void buildSignature(StringBuffer sb){
-        sb.append(ENDPOINT);
+        sb.append(YummlyCredentials.ENDPOINT);
         sb.append("/api/recipes?");
-        sb.append("_app_id=" + APPLICATION_ID);
-        sb.append("&_app_key=" + API_KEY);
+        sb.append("_app_id=" + YummlyCredentials.APPLICATION_ID);
+        sb.append("&_app_key=" + YummlyCredentials.API_KEY);
         sb.append("&q=");
     }
 
@@ -188,15 +212,15 @@ public class YummlySearchRequest {
     }
 
 //    private void
-    public static void setENDPOINT(String ENDPOINT) {
-        YummlySearchRequest.ENDPOINT = ENDPOINT;
-    }
-
-    public static void setAPPLICATION_ID(String APPLICATION_ID) {
-        YummlySearchRequest.APPLICATION_ID = APPLICATION_ID;
-    }
-
-    public static void setAPI_KEY(String API_KEY) {
-        YummlySearchRequest.API_KEY = API_KEY;
-    }
+//    public static void setENDPOINT(String ENDPOINT) {
+//        YummlyCredentials.ENDPOINT = ENDPOINT;
+//    }
+//
+//    public static void setAPPLICATION_ID(String APPLICATION_ID) {
+//        YummlySearchRequest.APPLICATION_ID = APPLICATION_ID;
+//    }
+//
+//    public static void setAPI_KEY(String API_KEY) {
+//        YummlySearchRequest.API_KEY = API_KEY;
+//    }
 }

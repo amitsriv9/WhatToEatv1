@@ -15,13 +15,17 @@ public class YummlyRecipe extends Recipe{
     private double flavor_biter;
     private double flavor_meaty;
     private double flavor_piquant;
-    private int rating;
+    private double rating;
     private String id;
     private String smallImageUrls;
     private String sourceDisplayName;
     private int totalTimeInSeconds;
 
     public YummlyRecipe(String name, List<Ingredient> ingredients){super(name, ingredients);}
+
+    public YummlyRecipe(String name) {
+        super(name);
+    }
 
     public YummlyRecipe(String name, List<Ingredient> ingredients, String course, String cuisine, String holiday, double flavor_salty, double flavor_sour, double flavor_sweet, double flavor_biter, double flavor_meaty, double flavor_piquant, int rating, String id, String smallImageUrls, String sourceDisplayName, int totalTimeInSeconds) {
         super(name, ingredients);
@@ -77,7 +81,7 @@ public class YummlyRecipe extends Recipe{
         return flavor_piquant;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -121,7 +125,7 @@ public class YummlyRecipe extends Recipe{
         this.id = id;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
