@@ -55,6 +55,8 @@ public class YummlyGetParser implements ServiceResultParser{
 //        result.add(yummlyResult.getFacetCounts());
 //        result.add(yummlyResult.getMatches());
 //        result.add(yummlyResult.getTotalMatchCount());
+
+        DetailedYummlyRecipe recipe = yummlyResult.getRecipe();
         return  result;
     }
 

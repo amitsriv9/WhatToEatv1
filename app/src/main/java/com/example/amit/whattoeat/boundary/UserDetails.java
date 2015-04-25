@@ -30,13 +30,14 @@ private Button mNext;
 
 //        List<Ingredient> ingredients = new LinkedList<Ingredient>();
 //        ingredients.add(new Ingredient("onion"));
-//        YummlySearchResult result = new YummlySearchResult();
 //
+//        YummlySearchResult result = new YummlySearchResult();
 //        YummlySearchRequest request = new YummlySearchRequest();
 //        request.addIngredient(new Ingredient("onion"));
 //        request.addCourse(Enums.Course.SOUPS);
-//
+//        request.addAllergy(Enums.Allergy.DAIRY);
 //        new YummlyFetchThread(request, result).start(); //todo delete this, just for testing
+//        result.getRecipes();
 
         YummlyGetResult result = new YummlyGetResult();
         Thread getterThread = new YummlyGetThread(new YummlyGetRequest("French-Onion-Soup-1019866"), result);
