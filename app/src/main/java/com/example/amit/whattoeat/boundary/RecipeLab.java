@@ -1,5 +1,6 @@
 package com.example.amit.whattoeat.boundary;
 
+import com.example.amit.whattoeat.entity.DetailedYummlyRecipe;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
 
 import java.util.ArrayList;
@@ -17,5 +18,13 @@ public class RecipeLab {
 
     public static YummlyRecipe getRecipe(int id) {
         return new YummlyRecipe(String.valueOf(id));
+    }
+
+    public static YummlyRecipe getRecipe(String id) {
+        return new YummlyRecipe(id);
+    }
+
+    public static DetailedYummlyRecipe getDetailedRecipe(String id) {
+        return new DetailedYummlyRecipe(id);
     }
 }

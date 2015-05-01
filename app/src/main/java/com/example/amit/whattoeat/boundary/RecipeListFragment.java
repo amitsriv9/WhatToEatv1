@@ -41,7 +41,7 @@ public class RecipeListFragment extends ListFragment {
         Log.d("Tag", " was clicked");
         YummlyRecipe recipe = ((RecipeAdapter) getListAdapter()).getItem(position);
         Intent i = new Intent(getActivity(), RecipeActivity.class);
-        i.putExtra(YummlySearchResult.RECIPE_NAME, recipe.getName());
+        i.putExtra(YummlySearchResult.ID, recipe.getName());
         startActivity(i);
     }
 
