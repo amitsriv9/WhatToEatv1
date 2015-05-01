@@ -24,7 +24,7 @@ public class Recipe {
     }
 
     public Long getRecipeByID(Long recipeId){
-        id = recipeId;
+        return id;
     }
 
     public void setName(String recipeName){
