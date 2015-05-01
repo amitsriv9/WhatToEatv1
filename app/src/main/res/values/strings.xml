@@ -10,5 +10,9 @@
     <string name="title_activity_recipe_list_fragment">RecipeListFragment</string>
     <string name="title_activity_single_fragment">SingleFragmentActivity</string>
     <string name="title_activity_recipe_list">RecipeListActivity</string>
+    <string name="title_activity_recipe">RecipeActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

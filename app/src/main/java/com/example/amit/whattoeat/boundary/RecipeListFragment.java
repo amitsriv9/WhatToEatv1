@@ -2,6 +2,7 @@ package com.example.amit.whattoeat.boundary;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
+import com.example.amit.whattoeat.entity.YummlySearchResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,10 @@ public class RecipeListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
 
         Log.d("Tag", " was clicked");
+        YummlyRecipe recipe = ((RecipeAdapter) getListAdapter()).getItem(position);
+        Intent i = new Intent(getActivity(), RecipeActivity.class);
+        i.putExtra(YummlySearchResult.RECIPE_NAME, recipe.getName());
+        startActivity(i);
     }
 
     private class RecipeAdapter extends ArrayAdapter<YummlyRecipe> {
