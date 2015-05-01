@@ -20,6 +20,6 @@ public class YummlyGetThread extends Thread {
 //        super.run();
         System.out.println("running get thread");
         new YummlyRecipeGetter().getRecipe(request, result);
-        notifyAll();
+//        notifyAll();
     }
 }

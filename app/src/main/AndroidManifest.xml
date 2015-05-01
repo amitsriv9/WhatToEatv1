@@ -3,6 +3,7 @@
     package="com.example.amit.whattoeat" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -11,15 +12,22 @@
         <activity
             android:name=".boundary.UserDetails"
             android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".boundary.AllPreferences"
+            android:label="@string/title_activity_preferences" >
+        </activity>
+
+
+        <activity
+            android:name=".boundary.RecipeListActivity"
+            android:label="@string/title_activity_recipe_list" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".boundary.AllPreferences"
-            android:label="@string/title_activity_preferences" >
         </activity>
     </application>
 
