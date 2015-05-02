@@ -113,7 +113,7 @@ public class RecipeListFragment extends ListFragment {
 
             } else {
                 ((RecipeAdapter)getListAdapter()).notifyDataSetChanged(); //todo wasn't able to update UI on its own
-                setupAdapter();
+                setupAdapter(); //todo this line successfully updated UI.
             }
 //===================================
 //            if(mItems == null || refreshing) {

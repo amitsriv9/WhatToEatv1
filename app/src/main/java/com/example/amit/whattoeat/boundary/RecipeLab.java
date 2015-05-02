@@ -1,6 +1,7 @@
 package com.example.amit.whattoeat.boundary;
 
 import com.example.amit.whattoeat.controller.YummlyFetchThread;
+import com.example.amit.whattoeat.controller.YummlySearcher;
 import com.example.amit.whattoeat.entity.DetailedYummlyRecipe;
 import com.example.amit.whattoeat.entity.Ingredient;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
@@ -32,15 +33,26 @@ public class RecipeLab {
 //    }
 
     public static ArrayList<YummlyRecipe> getRecipes(ArrayList<String> keywords) {
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException ex) {
 
-        }
-        ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
-        recipes.add(new YummlyRecipe("key one"));
-        recipes.add(new YummlyRecipe("key two"));
+        YummlySearchResult result = new YummlySearchResult();
+        YummlySearchRequest request = new YummlySearchRequest();
+        request.addIngredient(new Ingredient("onion"));
+        request.addCourse(Enums.Course.SOUPS);
+        request.addAllergy(Enums.Allergy.DAIRY);
+        new YummlySearcher().fetchByRequest(request, result);
+        ArrayList<YummlyRecipe> recipes = result.getRecipes();
         return recipes;
+
+        //these lines worked properly to demonstrate UI update
+//        try {
+//            Thread.sleep(1500);
+//        } catch (InterruptedException ex) {
+//
+//        }
+//        ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
+//        recipes.add(new YummlyRecipe("key one"));
+//        recipes.add(new YummlyRecipe("key two"));
+//        return recipes;
 
     }
 
@@ -55,4 +67,6 @@ public class RecipeLab {
     public static DetailedYummlyRecipe getDetailedRecipe(String id) {
         return new DetailedYummlyRecipe("detailed" + id);
     }
+
+
 }
