@@ -19,7 +19,7 @@ public class Recipe {
     String meal_time;
     Long id;
 
-     public Recipe(String name) {
+    public Recipe(String name) {
         this.name = name;
     }
 
