@@ -6,14 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,10 +17,8 @@ import android.widget.TextView;
 
 import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
-import com.example.amit.whattoeat.entity.YummlySearchResult;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeListFragment extends ListFragment {
     private ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
@@ -36,7 +30,7 @@ public class RecipeListFragment extends ListFragment {
 
         recipes = RecipeLab.getRecipes();
 
-        new FetchItemsTask().execute();
+        new SearchRecipesTask().execute();
 //        recipes = null;
 //        recipes = new ArrayList<YummlyRecipe>();//todo delete, this line proves that empty recipes would not be problem for adapter
         setupAdapter();
@@ -92,7 +86,7 @@ public class RecipeListFragment extends ListFragment {
         }
     }
 
-    private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<YummlyRecipe>> {
+    private class SearchRecipesTask extends AsyncTask<Void,Void,ArrayList<YummlyRecipe>> {
         @Override
         protected ArrayList<YummlyRecipe> doInBackground(Void... params) {
             Activity activity = getActivity();

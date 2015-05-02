@@ -2,6 +2,7 @@ package com.example.amit.whattoeat.boundary;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ import com.example.amit.whattoeat.entity.Recipe;
 import com.example.amit.whattoeat.entity.YummlyGetResult;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
+
+import java.util.ArrayList;
 
 public class RecipeFragment extends Fragment {
     private DetailedYummlyRecipe recipe;
@@ -74,7 +77,7 @@ public class RecipeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         String recipeID = RecipeListFragment.clickedRecipe.getId();
-        recipe = RecipeLab.getDetailedRecipe(recipeID);
+        new GetRecipesTask().execute();
         //==================
 //        if (getArguments() != null) {
 //            mParam1 = getArguments().getString(ARG_PARAM1);
@@ -87,8 +90,10 @@ public class RecipeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_recipe, container, false);
+        if(recipe == null){return v;}
+
         recipeName = (TextView) v.findViewById(R.id.detailedRecipe_name);
-        recipeName.setText(recipe.getName());
+        recipeName.setText(recipe.getPreparations().get(0));
 
         recipeImage = (ImageView) v.findViewById(R.id.detailedRecipe_image);
         recipeImage.setImageResource(R.drawable.ic_launcher);
@@ -139,6 +144,56 @@ public class RecipeFragment extends Fragment {
 //        public void onFragmentInteraction(Uri uri);
 //    }
 
+    private class GetRecipesTask extends AsyncTask<Void,Void,DetailedYummlyRecipe> {
+        @Override
+        protected DetailedYummlyRecipe doInBackground(Void... params) {
+            Activity activity = getActivity();
+            if (activity == null)
+                return null;
+            recipe = RecipeLab.getDetailedRecipe(RecipeListFragment.clickedRecipe.getId());
+            return recipe;
+//            String query = PreferenceManager.getDefaultSharedPreferences(activity)
+//                    .getString(FlickrFetchr.PREF_SEARCH_QUERY, null);
+//
+//            if (query != null) {
+//                return new FlickrFetchr().search(query, 1);
+//            } else {
+//                return new FlickrFetchr().fetchItems(mPage);
+//            }
+        }
 
+        @Override
+        //JUN this is run on main thread -- NOT background thread -- p415
+        protected void onPostExecute(DetailedYummlyRecipe recipe) {
+            if(recipe == null) {
+
+            } else {
+                getFragmentManager().beginTransaction()
+                        .detach(RecipeFragment.this)
+                        .attach(RecipeFragment.this)
+                        .commit();
+//                public void setData(Data data) {
+//                    this.data = data;
+//                    // The reload fragment code here !
+//                    if (this.isDetached()) {
+//                        getFragmentManager().beginTransaction()
+//                                .detach(this)
+//                                .attach(this)
+//                                .commit();
+//                    }
+//                }
+            }
+//===================================
+//            if(mItems == null || refreshing) {
+//                mItems = items;
+//                refreshing = false;
+//                setupAdapter();
+//            } else {
+//                mItems.addAll(items);
+//                ((BaseAdapter)mGridView.getAdapter()).notifyDataSetChanged();
+//            }
+//            loading = false;
+        }
+    }
 
 }
