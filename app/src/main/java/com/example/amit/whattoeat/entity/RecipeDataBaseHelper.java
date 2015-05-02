@@ -72,11 +72,6 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
                 "3");  // limit 3
         return new RecipeCursor(wrapped);
     }
-
-
-
-
-
     public static class RecipeCursor extends CursorWrapper {
         public RecipeCursor(Cursor c) {
             super(c);
