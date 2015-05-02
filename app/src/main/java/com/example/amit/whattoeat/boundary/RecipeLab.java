@@ -67,6 +67,4 @@ public class RecipeLab {
     public static DetailedYummlyRecipe getDetailedRecipe(String id) {
         return new DetailedYummlyRecipe("detailed" + id);
     }
-
-
 }

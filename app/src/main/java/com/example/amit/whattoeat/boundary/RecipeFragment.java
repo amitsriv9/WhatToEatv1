@@ -73,7 +73,7 @@ public class RecipeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String recipeID = getActivity().getIntent().getStringExtra(YummlySearchResult.ID);
+        String recipeID = RecipeListFragment.clickedRecipe.getId();
         recipe = RecipeLab.getDetailedRecipe(recipeID);
         //==================
 //        if (getArguments() != null) {

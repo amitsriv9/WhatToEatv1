@@ -29,6 +29,7 @@ import java.util.List;
 public class RecipeListFragment extends ListFragment {
     private ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
     private ArrayList<String> searchKeywords = new ArrayList<String>();
+    public static YummlyRecipe clickedRecipe;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().setTitle("test title");
@@ -48,12 +49,15 @@ public class RecipeListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-
-        Log.d("Tag", " was clicked");
-        YummlyRecipe recipe = ((RecipeAdapter) getListAdapter()).getItem(position);
+        clickedRecipe = ((RecipeAdapter) getListAdapter()).getItem(position);
         Intent i = new Intent(getActivity(), RecipeActivity.class);
-        i.putExtra(YummlySearchResult.ID, recipe.getName());
         startActivity(i);
+        //these lines worked ==============
+//        Log.d("Tag", " was clicked");
+//        YummlyRecipe recipe = ((RecipeAdapter) getListAdapter()).getItem(position);
+//        Intent i = new Intent(getActivity(), RecipeActivity.class);
+//        i.putExtra(YummlySearchResult.ID, recipe.getName());
+//        startActivity(i);
     }
 
     private class RecipeAdapter extends ArrayAdapter<YummlyRecipe> {
