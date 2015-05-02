@@ -86,11 +86,13 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
             if( isBeforeFirst() || isAfterLast() ) {
                 return null;
             }
-        Recipe rec = new Recipe();
-        rec.setName();
-        rec.setIngredients();
-        rec.setTaste();
-        rec.setMealTime();
+            Recipe rec = new Recipe();
+            /* rec.setName();
+            rec.setIngredients();
+            rec.setTaste();
+            rec.setMealTime();
+            */
+            return  rec;
         }
     }
 
