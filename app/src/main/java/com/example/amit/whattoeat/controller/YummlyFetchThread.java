@@ -2,9 +2,11 @@ package com.example.amit.whattoeat.controller;
 
 import com.example.amit.whattoeat.entity.Ingredient;
 import com.example.amit.whattoeat.entity.Recipe;
+import com.example.amit.whattoeat.entity.YummlyRecipe;
 import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,13 +40,13 @@ public class YummlyFetchThread extends Thread {
 //        System.out.println("called servie");
         if(ingredients != null) {
             new YummlySearcher().fetchByIngredients(ingredients, result);
-            List<Recipe> recipes = result.getRecipes();
-            notifyAll();
+            ArrayList<YummlyRecipe> recipes = result.getRecipes();
+//            notifyAll();
             System.out.println(recipes);
         }else if(request != null) {
             new YummlySearcher().fetchByRequest(request, result);
-            List<Recipe> recipes = result.getRecipes();
-            notifyAll();
+            ArrayList<YummlyRecipe> recipes = result.getRecipes();
+//            notifyAll();
             System.out.println(recipes);
         }else {
             notifyAll();

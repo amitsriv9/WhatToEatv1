@@ -5,6 +5,7 @@ import com.example.amit.whattoeat.controller.YummlyIngredientWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class YummlySearchResult {
     JSONArray matches;
     JSONObject criteria;
 
-    public List<Recipe> getRecipes(){
-        List<Recipe> recipes = new LinkedList<Recipe>();
+    public ArrayList<YummlyRecipe> getRecipes(){
+        ArrayList<YummlyRecipe> recipes = new ArrayList<>();
         int count = matches.length();
         for(int i = 0; i < count; i ++) {
             try{
