@@ -4,9 +4,12 @@ package com.example.amit.whattoeat.boundary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 
 
 import com.example.amit.whattoeat.R;
+import com.example.amit.whattoeat.entity.ThumbnailDownloader;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
 
 import java.util.ArrayList;
@@ -24,6 +28,9 @@ public class RecipeListFragment extends ListFragment {
     private ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
     private ArrayList<String> searchKeywords = new ArrayList<String>();
     public static YummlyRecipe clickedRecipe;
+    ThumbnailDownloader<ImageView> mThumbnailThread;
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().setTitle("test title");
@@ -31,6 +38,19 @@ public class RecipeListFragment extends ListFragment {
         recipes = RecipeLab.getRecipes();
 
         new SearchRecipesTask().execute();
+
+
+        mThumbnailThread = new ThumbnailDownloader<ImageView>(new Handler()); //JUN ImageView used as identifier of each download
+        mThumbnailThread.setListener(new ThumbnailDownloader.Listener<ImageView>() {
+            @Override
+            public void onThumbnailDownloaded(ImageView imageView, Bitmap thumbnail) {
+                if (isVisible()) {
+                    imageView.setImageBitmap(thumbnail);
+                }
+            }
+        });
+        mThumbnailThread.start();
+        mThumbnailThread.getLooper();
 //        recipes = null;
 //        recipes = new ArrayList<YummlyRecipe>();//todo delete, this line proves that empty recipes would not be problem for adapter
         setupAdapter();
@@ -71,7 +91,16 @@ public class RecipeListFragment extends ListFragment {
             recipeName.setText(recipe.getName());
 
             ImageView recipeImg = (ImageView) convertView.findViewById(R.id.recipe_image);
+//
+//            Bitmap cacheHit = mThumbnailThread.checkCache(recipe.getSmallImageUrls());
+//            if (cacheHit != null) {
+//                recipeImg.setImageBitmap(cacheHit);
+//            } else {
+//                mThumbnailThread.queueThumbnail(recipeImg, recipe.getSmallImageUrls());
+//            }
+
             recipeImg.setImageResource(R.drawable.ic_launcher);
+
 
 //            TextView titleTextView =
 //                    (TextView)convertView.findViewById(R.id.crime_list_item_titleTextView);
@@ -125,4 +154,18 @@ public class RecipeListFragment extends ListFragment {
 //            loading = false;
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mThumbnailThread.quit(); //JUN kills the downloading thread p424
+        Log.i("TAG", "Background thread destroyed");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mThumbnailThread.clearQueue();
+    }
+
 }

@@ -96,6 +96,10 @@ public class YummlyGetResult {
 //        recipe.set
     }
 
+    public void fillImage(DetailedYummlyRecipe recipe){
+        //todo set image here
+    }
+
 
     public JSONObject getAttribution() {
         return attribution;

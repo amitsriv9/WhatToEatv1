@@ -13,7 +13,7 @@ import java.net.URL;
  * Created by Jun on 5/2/2015.
  */
 public class WebFetcher {
-    byte[] getUrlBytes(String urlSpec) throws IOException {
+    public byte[] getUrlBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
