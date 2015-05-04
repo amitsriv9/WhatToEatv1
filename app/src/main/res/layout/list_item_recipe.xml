@@ -9,8 +9,12 @@
         android:layout_height="wrap_content" />
     <TextView android:id="@+id/recipe_name"
         android:layout_toRightOf="@+id/recipe_image"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView android:id="@+id/recipe_flavor"
+        android:layout_toRightOf="@+id/recipe_image"
+        android:layout_below="@+id/recipe_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

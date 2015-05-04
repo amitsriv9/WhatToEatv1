@@ -101,6 +101,12 @@ public class RecipeListFragment extends ListFragment {
             TextView recipeName = (TextView) convertView.findViewById(R.id.recipe_name);
             recipeName.setText(recipe.getName());
 
+            TextView recipeFlavor = (TextView) convertView.findViewById(R.id.recipe_flavor);
+            String flavor = recipe.getDominantFlavor();
+            if(flavor != null){
+                recipeFlavor.setText("Flavor: " + flavor);
+            }
+
             ImageView recipeImg = (ImageView) convertView.findViewById(R.id.recipe_image);
 //
 //            Bitmap cacheHit = mThumbnailThread.checkCache(recipe.getSmallImageUrls());
