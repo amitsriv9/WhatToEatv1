@@ -85,12 +85,16 @@ public class RecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_recipe, container, false);
+        View v = inflater.inflate(R.layout.fragment_recipe_2, container, false);
         if(recipe == null){return v;}
 
         recipeName = (TextView) v.findViewById(R.id.detailedRecipe_name);
-        if(recipe.getPreparations() != null && recipe.getPreparations().size() > 0){
-            recipeName.setText(recipe.getPreparations().get(0));
+        if(recipe.getPreparations() != null && recipe.getPreparations().size() > 0) {
+            StringBuffer sb = new StringBuffer();
+            for(String s : recipe.getPreparations()){
+                sb.append(s + "\n");
+            }
+            recipeName.setText(sb.toString());
         }
 
         recipeImage = (ImageView) v.findViewById(R.id.detailedRecipe_image);
