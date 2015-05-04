@@ -42,7 +42,7 @@ public class UserDetails extends ActionBarActivity {
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(UserDetails.this, RecipeActivity.class);
+                        Intent i = new Intent(UserDetails.this, RecipeListActivity.class);
                         startActivity(i);
                     }
                 }
