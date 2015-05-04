@@ -30,31 +30,9 @@ public class UserDetails extends ActionBarActivity {
     //JUN added for communicating with API call
 
 
-private Button mNext;
+    private Button mNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-//        List<Ingredient> ingredients = new LinkedList<Ingredient>();
-//        ingredients.add(new Ingredient("onion"));
-//
-//        YummlySearchResult result = new YummlySearchResult();
-//        YummlySearchRequest request = new YummlySearchRequest();
-//        request.addIngredient(new Ingredient("onion"));
-//        request.addCourse(Enums.Course.SOUPS);
-//        request.addAllergy(Enums.Allergy.DAIRY);
-//        new YummlyFetchThread(request, result).start(); //todo delete this, just for testing
-//        result.getRecipes();
-
-        YummlyGetResult result = new YummlyGetResult();
-        Thread getterThread = new YummlyGetThread(new YummlyGetRequest("French-Onion-Soup-1019866"), result);
-        getterThread.start();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (Exception ex) {
-//
-//        }
-        result.getRecipe();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
         mNext = (Button) findViewById(R.id.button);
@@ -64,7 +42,8 @@ private Button mNext;
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
-
+                        Intent i = new Intent(UserDetails.this, RecipeActivity.class);
+                        startActivity(i);
                     }
                 }
         );
