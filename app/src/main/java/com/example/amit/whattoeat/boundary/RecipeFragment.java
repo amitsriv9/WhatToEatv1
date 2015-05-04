@@ -1,11 +1,14 @@
 package com.example.amit.whattoeat.boundary;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +16,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.amit.whattoeat.R;
+import com.example.amit.whattoeat.controller.WebFetcher;
 import com.example.amit.whattoeat.entity.DetailedYummlyRecipe;
 import com.example.amit.whattoeat.entity.RecipeLab;
 import com.example.amit.whattoeat.entity.YummlyGetResult;
 
+import java.io.IOException;
+
 public class RecipeFragment extends Fragment {
     private DetailedYummlyRecipe recipe;
-
+    private String imgURL = null;
     TextView recipeName;
     ImageView recipeImage;
-
-
-
-
-
+    Bitmap recipeBitmap;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -98,7 +100,11 @@ public class RecipeFragment extends Fragment {
         }
 
         recipeImage = (ImageView) v.findViewById(R.id.detailedRecipe_image);
-        recipeImage.setImageResource(R.drawable.ic_launcher);
+        if(recipeBitmap == null){
+            recipeImage.setImageResource(R.drawable.ic_launcher);
+        }else {
+            recipeImage.setImageBitmap(recipeBitmap);
+        }
 
         return v;
         //======================================
@@ -170,10 +176,15 @@ public class RecipeFragment extends Fragment {
             if(recipe == null) {
 
             } else {
+
                 getFragmentManager().beginTransaction()
                         .detach(RecipeFragment.this)
                         .attach(RecipeFragment.this)
                         .commit();
+                imgURL = recipe.getSmallImageUrls();
+                if(imgURL != null) {
+                    new GetRecipeImgTask().execute();
+                }
 //                public void setData(Data data) {
 //                    this.data = data;
 //                    // The reload fragment code here !
@@ -195,6 +206,34 @@ public class RecipeFragment extends Fragment {
 //                ((BaseAdapter)mGridView.getAdapter()).notifyDataSetChanged();
 //            }
 //            loading = false;
+        }
+    }
+
+    private class GetRecipeImgTask extends AsyncTask<Void, Void, Bitmap>{
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            return getBitmap(imgURL);
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            if(bitmap != null){
+                recipeImage.setImageBitmap(bitmap);
+            }
+        }
+
+        private Bitmap getBitmap(String url) {
+            try {
+                byte[] bitmapBytes = new WebFetcher().getUrlBytes(url);
+                Bitmap bitmapDecode = BitmapFactory
+                        .decodeByteArray(bitmapBytes, 0, bitmapBytes.length);
+                Log.i("Tag", "bitmap created");
+                return bitmapDecode;
+            } catch (IOException ioe) {
+                Log.e("tag", "Error downloading image", ioe);
+            }
+            return null;
         }
     }
 

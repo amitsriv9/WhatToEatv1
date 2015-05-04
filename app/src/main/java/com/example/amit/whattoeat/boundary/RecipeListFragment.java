@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.entity.Ingredient;
 import com.example.amit.whattoeat.entity.RecipeLab;
-import com.example.amit.whattoeat.entity.ThumbnailDownloader;
+import com.example.amit.whattoeat.controller.ThumbnailDownloader;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
 import com.example.amit.whattoeat.entity.YummlySearchRequest;
 

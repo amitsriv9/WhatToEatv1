@@ -1,4 +1,4 @@
-package com.example.amit.whattoeat.entity;
+package com.example.amit.whattoeat.controller;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
