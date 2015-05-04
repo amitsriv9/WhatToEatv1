@@ -19,12 +19,23 @@ import android.widget.TextView;
 
 
 import com.example.amit.whattoeat.R;
+import com.example.amit.whattoeat.entity.Ingredient;
+import com.example.amit.whattoeat.entity.RecipeLab;
 import com.example.amit.whattoeat.entity.ThumbnailDownloader;
 import com.example.amit.whattoeat.entity.YummlyRecipe;
+import com.example.amit.whattoeat.entity.YummlySearchRequest;
 
 import java.util.ArrayList;
 
 public class RecipeListFragment extends ListFragment {
+    public static YummlySearchRequest request;   //TODO move this to UserDetails or some other class
+
+    {
+        request = new YummlySearchRequest();
+        request.addIngredient(new Ingredient("onion"));
+        request.addIngredient(new Ingredient("beef"));
+    }
+
     private ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
     private ArrayList<String> searchKeywords = new ArrayList<String>();
     public static YummlyRecipe clickedRecipe;
@@ -35,7 +46,7 @@ public class RecipeListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         getActivity().setTitle("test title");
 
-        recipes = RecipeLab.getRecipes();
+//        recipes = RecipeLab.getRecipes();
 
         new SearchRecipesTask().execute();
 
@@ -121,7 +132,10 @@ public class RecipeListFragment extends ListFragment {
             Activity activity = getActivity();
             if (activity == null)
                 return new ArrayList<YummlyRecipe>();
-            recipes = RecipeLab.getRecipes(searchKeywords);
+
+
+            recipes = RecipeLab.getRecipes(RecipeListFragment.request, getActivity().getApplicationContext());//didnt work
+//            recipes = RecipeLab.getRecipes(RecipeListFragment.request);//this line works  but doesn't store the result
             return recipes;
 //            String query = PreferenceManager.getDefaultSharedPreferences(activity)
 //                    .getString(FlickrFetchr.PREF_SEARCH_QUERY, null);

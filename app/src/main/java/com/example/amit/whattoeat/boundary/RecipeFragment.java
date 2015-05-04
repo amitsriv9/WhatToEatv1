@@ -14,12 +14,8 @@ import android.widget.TextView;
 
 import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.entity.DetailedYummlyRecipe;
-import com.example.amit.whattoeat.entity.Recipe;
+import com.example.amit.whattoeat.entity.RecipeLab;
 import com.example.amit.whattoeat.entity.YummlyGetResult;
-import com.example.amit.whattoeat.entity.YummlyRecipe;
-import com.example.amit.whattoeat.entity.YummlySearchResult;
-
-import java.util.ArrayList;
 
 public class RecipeFragment extends Fragment {
     private DetailedYummlyRecipe recipe;
@@ -93,7 +89,9 @@ public class RecipeFragment extends Fragment {
         if(recipe == null){return v;}
 
         recipeName = (TextView) v.findViewById(R.id.detailedRecipe_name);
-        recipeName.setText(recipe.getPreparations().get(0));
+        if(recipe.getPreparations() != null && recipe.getPreparations().size() > 0){
+            recipeName.setText(recipe.getPreparations().get(0));
+        }
 
         recipeImage = (ImageView) v.findViewById(R.id.detailedRecipe_image);
         recipeImage.setImageResource(R.drawable.ic_launcher);

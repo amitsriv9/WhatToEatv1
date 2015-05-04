@@ -19,11 +19,17 @@ import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
 import com.example.amit.whattoeat.utilities.Enums;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 
 public class UserDetails extends ActionBarActivity {
+    //JUN added for communicating with API call
+
+    //JUN added for communicating with API call
+
+
 private Button mNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
