@@ -14,12 +14,13 @@ public class Recipe {
     String ingredients;
     String taste;
     String meal_time;
-    Long id;
+    String id;
 
     public Recipe(String name, List<Ingredient> ingredientslist) {
         this.name = name;
         this.ingredients = (String)ingredientslist.get(0).getName();
     }
+    public Recipe(){}
 
     public Long getRecipeByID(Long recipeId){
         return id;
@@ -44,25 +45,17 @@ public class Recipe {
     public String getName(){
         return name;
     }
-    public String getIng1(){
-        return ingredient_1;
+    public String getIngredients(){
+        return ingredients;
     }
-    public String getIng2(){
-        return ingredient_2;
-    }
-    public String getIng3(){
-        return ingredient_3;
-    }
-    public String getIng4(){
-        return ingredient_4;
-    }
+
     public String getTaste(){
         return taste;
     }
     public String getMealTime(){
         return meal_time;
     }
-    public Long getId(){
+    public String getId(){
         return id;
     }
 }

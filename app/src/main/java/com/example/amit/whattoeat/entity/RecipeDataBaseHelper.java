@@ -36,7 +36,7 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL(SQL_DELETE_ENTRIES);
+        //db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
     public long insertRecipes(ArrayList<Recipe> recipeList ) {
@@ -48,16 +48,16 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
          cv.put(COLUMN_RECIPE_ID, recipe.getId());
          cv.put(COLUMN_INGREDIENTS, recipe.getIngredients());
          cv.put(COLUMN_TASTE, recipe.getTaste());
-         cv.put(COLUMN_MEAL_TYPE, recipe.getMeal());
+         //cv.put(COLUMN_MEAL_TYPE, recipe.getMeal());
          status = getWritableDatabase().insert(TABLE_RECIPE_LIST, null, cv);
      }
         return status;
      }
 
-    public RecipeCursor selectRecipe(String ingredient){
-        Cursor wrapped = getReadabledatabase().query(TABLE_RECIPE_LIST,
+    public RecipeCursor selectRecipe(String[] ingredient){
+        Cursor wrapped = getReadableDatabase().query(TABLE_RECIPE_LIST,
                 null,
-                COLUMN_INGREDIENT_1 + "= ?",  // look for a matching recipe ingredient
+                COLUMN_INGREDIENTS + "= ?",  // look for a matching recipe ingredient
                 ingredient,
                 null,
                 null,

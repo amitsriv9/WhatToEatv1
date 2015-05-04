@@ -27,6 +27,6 @@ public class Reminder {
         return localReminder;
     }
 
-    public RecipeCursor getSuggestions(String timeOfDay){ return dbHelper.getRecipeList(timeOfday);}
+    //public RecipeCursor getSuggestions(String timeOfDay){ return dbHelper.getRecipeList(timeOfday);}
 
 }

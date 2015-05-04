@@ -24,7 +24,7 @@ public class YummlyRecipe extends Recipe{
     public YummlyRecipe(String name, List<Ingredient> ingredients){super(name, ingredients);}
 
     public YummlyRecipe(String name) {
-        super(name);
+        super.getName();
     }
 
     public YummlyRecipe(String name, List<Ingredient> ingredients, String course, String cuisine, String holiday, double flavor_salty, double flavor_sour, double flavor_sweet, double flavor_biter, double flavor_meaty, double flavor_piquant, int rating, String id, String smallImageUrls, String sourceDisplayName, int totalTimeInSeconds) {
@@ -86,7 +86,7 @@ public class YummlyRecipe extends Recipe{
     }
 
     public String getId() {
-        return id;
+        return super.getId();
     }
 
     public String getSmallImageUrls() {
@@ -105,7 +105,7 @@ public class YummlyRecipe extends Recipe{
         return super.getName();
     }
 
-    public List<Ingredient> getIngredients(){
+    public String getIngredients(){
         return super.getIngredients();
     }
 
