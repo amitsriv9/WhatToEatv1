@@ -11,16 +11,14 @@ import android.provider.BaseColumns;
  */
 public class Recipe {
     String name;
-    String ingredient_1;
-    String ingredient_2;
-    String ingredient_3;
-    String ingredient_4;
+    String ingredients;
     String taste;
     String meal_time;
     Long id;
 
-    public Recipe(String name) {
+    public Recipe(String name, List<Ingredient> ingredientslist) {
         this.name = name;
+        this.ingredients = (String)ingredientslist.get(0).getName();
     }
 
     public Long getRecipeByID(Long recipeId){
@@ -34,24 +32,7 @@ public class Recipe {
         int listsize = 0;
         listsize = ingredientlist.size();
 
-        if (4 == listsize ){
-            ingredient_1  =  ingredientlist.get(0);
-            ingredient_2  =  ingredientlist.get(1);
-            ingredient_3  =  ingredientlist.get(2);
-            ingredient_4  =  ingredientlist.get(3);
-        }
-        else if (3 == listsize ){
-            ingredient_1  =  ingredientlist.get(0);
-            ingredient_2  =  ingredientlist.get(1);
-            ingredient_3  =  ingredientlist.get(2);
-        }
-        else if (2 == listsize){
-            ingredient_1  =  ingredientlist.get(0);
-            ingredient_2  =  ingredientlist.get(1);
-        }
-        else if (1 == listsize){
-            ingredient_1  =  ingredientlist.get(0);
-        }
+
     }
 
     public void setTaste(String flavor){

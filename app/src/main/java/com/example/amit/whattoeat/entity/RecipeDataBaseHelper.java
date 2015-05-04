@@ -21,11 +21,8 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_RECIPE_ID = "_id";
     private static final String COLUMN_RECIPE_NAME = "name";
 
-    private static final String COLUMN_INGREDIENT_1 = "ingredient_1";
-    private static final String COLUMN_INGREDIENT_2 = "ingredient_2";
-    private static final String COLUMN_INGREDIENT_3 = "ingredient_3";
-    private static final String COLUMN_INGREDIENT_4 = "ingredient_4";
-    private static final String COLUMN_TASTE = "taste";
+    private static final String COLUMN_INGREDIENTS = "ingredients";
+    private static final String COLUMN_TASTE = "flavor";
     private static final String COLUMN_MEAL_TYPE = "meal_type";
 
     public RecipeDataBaseHelper(Context newContext){super(newContext, DATABASE_NAME, null, DATABASE_VERSION);
@@ -49,11 +46,7 @@ public class RecipeDataBaseHelper extends SQLiteOpenHelper {
          Recipe recipe = recipeList.get(i);
          ContentValues cv = new ContentValues();
          cv.put(COLUMN_RECIPE_ID, recipe.getId());
-         cv.put(COLUMN_INGREDIENT_1, recipe.getIng1());
-         cv.put(COLUMN_INGREDIENT_2, recipe.getIng2());
-         cv.put(COLUMN_INGREDIENT_3, recipe.getIng3());
-         cv.put(COLUMN_INGREDIENT_4, recipe.getIng4());
-         cv.put(COLUMN_RECIPE_NAME, recipe.getName());
+         cv.put(COLUMN_INGREDIENTS, recipe.getIngredients());
          cv.put(COLUMN_TASTE, recipe.getTaste());
          cv.put(COLUMN_MEAL_TYPE, recipe.getMeal());
          status = getWritableDatabase().insert(TABLE_RECIPE_LIST, null, cv);
