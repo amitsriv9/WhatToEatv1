@@ -97,7 +97,7 @@ public class RecipeListFragment extends ListFragment {
                         .inflate(R.layout.list_item_recipe, null);
             } // Configure the view for this Crime
             YummlyRecipe recipe = getItem(position);
-
+//            if()
             TextView recipeName = (TextView) convertView.findViewById(R.id.recipe_name);
             recipeName.setText(recipe.getName());
 
@@ -108,15 +108,19 @@ public class RecipeListFragment extends ListFragment {
             }
 
             ImageView recipeImg = (ImageView) convertView.findViewById(R.id.recipe_image);
-//
-//            Bitmap cacheHit = mThumbnailThread.checkCache(recipe.getSmallImageUrls());
-//            if (cacheHit != null) {
-//                recipeImg.setImageBitmap(cacheHit);
-//            } else {
-//                mThumbnailThread.queueThumbnail(recipeImg, recipe.getSmallImageUrls());
-//            }
 
-            recipeImg.setImageResource(R.drawable.ic_launcher);
+            if(recipe.getSmallImageUrls() != null){
+                Bitmap cacheHit = mThumbnailThread.checkCache(recipe.getSmallImageUrls());
+                if (cacheHit != null) {
+                    recipeImg.setImageBitmap(cacheHit);
+                } else {
+                    recipeImg.setImageResource(R.drawable.ic_launcher);
+                    mThumbnailThread.queueThumbnail(recipeImg, recipe.getSmallImageUrls());
+                }
+            }else {
+                recipeImg.setImageResource(R.drawable.ic_launcher);
+            }
+
 
 
 //            TextView titleTextView =
