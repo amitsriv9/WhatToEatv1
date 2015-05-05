@@ -94,11 +94,12 @@ public class RecipeListFragment extends ListFragment {
 // If we weren't given a view, inflate one
             if (convertView == null) {
                 convertView = getActivity().getLayoutInflater()
-                        .inflate(R.layout.list_item_recipe, null);
+                        .inflate(R.layout.list_item_recipe_2, null);
             } // Configure the view for this Crime
             YummlyRecipe recipe = getItem(position);
 //            if()
             TextView recipeName = (TextView) convertView.findViewById(R.id.recipe_name);
+            recipeName.setTextSize(18);
             recipeName.setText(recipe.getName());
 
             TextView recipeFlavor = (TextView) convertView.findViewById(R.id.recipe_flavor);
