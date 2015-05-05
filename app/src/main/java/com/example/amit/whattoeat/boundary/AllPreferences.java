@@ -1,17 +1,34 @@
 package com.example.amit.whattoeat.boundary;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.amit.whattoeat.R;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class AllPreferences extends ActionBarActivity {
-private Button mSubmit;
+
+
+    private Button mSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +39,25 @@ private Button mSubmit;
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         Toast.makeText(AllPreferences.this, R.string.submit_toast, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(AllPreferences.this, RecipeListActivity.class);
+                        startActivity(i);
                     }
                 }
         );
     }
-
+    /* public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+        public Dialog onCreateDialog(Bundle savedInstance){
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+        public void timeSet(TimePicker view, int hourOfDay, int minute){
+            // set reminnder for the wake up call
+        }
+    }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,5 +79,23 @@ private Button mSubmit;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveIngredientChoice(ArrayList<String> userChoice){
+        String FileName = "userIngredients";
+        try {
+            FileOutputStream fo = openFileOutput(FileName, Context.MODE_PRIVATE);
+
+            for(int i = 0; i <userChoice.size();i++){
+                fo.write(userChoice.get(i).getBytes());
+            }
+            fo.close();
+        }catch(FileNotFoundException f_no){
+            Log.v("AllPreferences", "File not found");
+        }
+        catch(IOException io_prob){
+            Log.d("AllPreferences","Could not read write the file");
+        }
+
     }
 }

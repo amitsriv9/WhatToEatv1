@@ -90,7 +90,8 @@ public class UserDetails extends ActionBarActivity {
                                          Toast.makeText(UserDetails.this,firstToast , Toast.LENGTH_SHORT).show();
 
                                          //Jun start 2
-
+                                         Intent i = new Intent(UserDetails.this, AllPreferences.class);
+                                         startActivity(i);
                                          //Jun end 2
                                      }
                                  }

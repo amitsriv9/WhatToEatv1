@@ -63,28 +63,46 @@
             android:layout_height="wrap_content"
             android:text="Breakfast"
             android:id="@+id/breakfast" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:ems="10"
+            android:id="@+id/editBreakfast" />
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lunch"
             android:id="@+id/lunch" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:ems="10"
+            android:id="@+id/editLunch" />
+
         <CheckBox
             android:layout_width="wrap_content"
-
-
             android:layout_height="wrap_content"
             android:text="Dinner"
             android:id="@+id/dinner" />
-        <CheckBox
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Evening Snack"
-            android:id="@+id/eveningSnack" />
+            android:inputType="time"
+            android:ems="10"
+            android:id="@+id/editDinner" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
             android:id="@+id/button" />
+
     </LinearLayout>
 
 </RelativeLayout>
