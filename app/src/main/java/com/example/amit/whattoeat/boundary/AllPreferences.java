@@ -1,7 +1,10 @@
 package com.example.amit.whattoeat.boundary;
 
+import android.content.Context;
+import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +12,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.amit.whattoeat.R;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class AllPreferences extends ActionBarActivity {
 private Button mSubmit;
@@ -48,5 +56,23 @@ private Button mSubmit;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveIngredientChoice(ArrayList<String> userChoice){
+        String FileName = "userIngredients";
+        try {
+            FileOutputStream fo = openFileOutput(FileName, Context.MODE_PRIVATE);
+
+        for(int i = 0; i <userChoice.size();i++){
+            fo.write(userChoice.get(i).getBytes());
+        }
+            fo.close();
+        }catch(FileNotFoundException f_no){
+            Log.v("AllPreferences", "File not found");
+        }
+        catch(IOException io_prob){
+            Log.d("AllPreferences","Could not read write the file");
+        }
+
     }
 }

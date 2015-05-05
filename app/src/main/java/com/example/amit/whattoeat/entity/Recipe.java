@@ -3,8 +3,6 @@ package com.example.amit.whattoeat.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 /**
  * Created by Amit on 4/15/2015.
@@ -22,7 +20,7 @@ public class Recipe {
     }
     public Recipe(){}
 
-    public Long getRecipeByID(Long recipeId){
+    public String getRecipeByID(Long recipeId){
         return id;
     }
 

@@ -7,5 +7,6 @@
     <string name="title_activity_preferences">Preferences</string>
     <string name="submit_toast">Thank You!</string>
     <string name="welcome_toast">A few more settings</string>
+    <string name="title_activity_food_type">FoodTypeActivity</string>
 
 </resources>

@@ -5,6 +5,7 @@ package com.example.amit.whattoeat.entity;
  */
 public class Ingredient {
     private String name;
+    private String type;
 
     public Ingredient(String name) {
         this.name = name;
