@@ -4,6 +4,7 @@
     <TextView
         android:id="@+id/detailed_recipe_name"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView android:id = "@+id/detailedRecipe_image"
