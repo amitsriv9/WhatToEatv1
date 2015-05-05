@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.amit.whattoeat.R;
@@ -29,6 +30,7 @@ public class RecipeFragment extends Fragment {
     private DetailedYummlyRecipe recipe;
     private String imgURL = null;
     public static String sourceURL = null;
+    TextView recipeSteps;
     TextView recipeName;
     ImageView recipeImage;
     Bitmap recipeBitmap;
@@ -94,13 +96,17 @@ public class RecipeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recipe_2, container, false);
         if(recipe == null){return v;}
 
-        recipeName = (TextView) v.findViewById(R.id.detailed_recipe_steps);
+        recipeName = (TextView) v.findViewById(R.id.detailed_recipe_name);
+        recipeName.setText(recipe.getName());
+        recipeName.setTextSize(20);
+
+        recipeSteps = (TextView) v.findViewById(R.id.detailed_recipe_steps);
         if(recipe.getPreparations() != null && recipe.getPreparations().size() > 0) {
             StringBuffer sb = new StringBuffer();
             for(String s : recipe.getPreparations()){
                 sb.append(s + "\n");
             }
-            recipeName.setText(sb.toString());
+            recipeSteps.setText(sb.toString());
         }
 
         recipeImage = (ImageView) v.findViewById(R.id.detailedRecipe_image);
@@ -109,6 +115,9 @@ public class RecipeFragment extends Fragment {
         }else {
             recipeImage.setImageBitmap(recipeBitmap);
         }
+        recipeImage.setPadding(0,20,0,20);
+
+
         viewSourceButton = (Button) v.findViewById(R.id.view_source);
         viewSourceButton.setOnClickListener(
                 new View.OnClickListener() {
