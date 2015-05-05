@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -13,6 +16,7 @@ import com.example.amit.whattoeat.R;
 import com.example.amit.whattoeat.controller.YummlyFetchThread;
 import com.example.amit.whattoeat.controller.YummlyGetThread;
 import com.example.amit.whattoeat.entity.Ingredient;
+import com.example.amit.whattoeat.entity.User;
 import com.example.amit.whattoeat.entity.YummlyGetRequest;
 import com.example.amit.whattoeat.entity.YummlyGetResult;
 import com.example.amit.whattoeat.entity.YummlySearchRequest;
@@ -24,41 +28,44 @@ import java.util.List;
 
 
 public class UserDetails extends ActionBarActivity {
-private Button mNext;
+    private Button mNext;
+    private EditText age, gender, ht_feet, ht_inches, weight;
+    private RadioGroup radioGender;
+    private RadioButton radioGenderIs;
+    Long l_weight, l_feet, l_inches;
+    User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-//        List<Ingredient> ingredients = new LinkedList<Ingredient>();
-//        ingredients.add(new Ingredient("onion"));
-//
-//        YummlySearchResult result = new YummlySearchResult();
-//        YummlySearchRequest request = new YummlySearchRequest();
-//        request.addIngredient(new Ingredient("onion"));
-//        request.addCourse(Enums.Course.SOUPS);
-//        request.addAllergy(Enums.Allergy.DAIRY);
-//        new YummlyFetchThread(request, result).start(); //todo delete this, just for testing
-//        result.getRecipes();
 
         YummlyGetResult result = new YummlyGetResult();
         Thread getterThread = new YummlyGetThread(new YummlyGetRequest("French-Onion-Soup-1019866"), result);
         getterThread.start();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (Exception ex) {
-//
-//        }
         result.getRecipe();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-        mNext = (Button) findViewById(R.id.button);
-        mNext = (Button) findViewById(R.id.button);
 
-        mNext.setOnClickListener(
-                new View.OnClickListener() {
+        mNext = (Button) findViewById(R.id.personalDetailsButton);
+
+        mNext.setOnClickListener(new View.OnClickListener() {
+                    @Override
                     public void onClick(View v) {
-                        Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
+                        age = (EditText)findViewById(R.id.editAge);
+                        ht_feet = (EditText)findViewById(R.id.editHeightFeet);
+                        ht_inches = (EditText)findViewById(R.id.editHeightInches);
+                        gender =  (EditText)findViewById(R.id.personalDetailsButton);
+                        weight =  (EditText)findViewById(R.id.editWeight);
+                        radioGender = (RadioGroup)findViewById(R.id.radioGroup);
 
+                        int selectedId = radioGender.getCheckedRadioButtonId();
+                        radioGenderIs = (RadioButton)findViewById(selectedId);
+                        currentUser = new User(
+                                Long.parseLong(weight.getText().toString()),
+                                Integer.parseInt(age.getText().toString()),
+                                Long.parseLong(ht_feet.getText().toString()),
+                                Long.parseLong(ht_inches.getText().toString()),
+                                radioGenderIs.getText().toString());
+                        Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
                     }
                 }
         );

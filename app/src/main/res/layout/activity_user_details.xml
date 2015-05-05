@@ -27,21 +27,21 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Height"
-            android:id="@+id/textView" />
+            android:id="@+id/textHeight" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText" />
+            android:id="@+id/editHeightFeet" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2" />
+            android:id="@+id/editHeightInches" />
 
         </LinearLayout>
 
@@ -56,14 +56,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Weight"
-        android:id="@+id/textView2" />
+        android:id="@+id/textWeight" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText3" />
+        android:id="@+id/editWeight" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,14 +76,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Age"
-            android:id="@+id/textView3" />
+            android:id="@+id/textAge" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText4" />
+            android:id="@+id/editAge" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,26 +96,34 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Gender"
-            android:id="@+id/textView4" />
+            android:id="@+id/textGender" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/radioButton" />
+            android:text="Male"
+            android:id="@+id/radioMale" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/radioButton2" />
+            android:text="Female"
+            android:id="@+id/radioFemale" />
+
+        </RadioGroup>
         </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next"
-            android:id="@+id/button" />
+            android:id="@+id/personalDetailsButton"
+            android:onClick=""/>
 
     </LinearLayout>
 
