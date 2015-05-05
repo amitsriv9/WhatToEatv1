@@ -1,5 +1,6 @@
 package com.example.amit.whattoeat.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class YummlyRecipe extends Recipe{
     }
 
     private int totalTimeInSeconds;
+
 
     public YummlyRecipe(String name, List<Ingredient> ingredients){super(name, ingredients);}
 
