@@ -6,192 +6,203 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.amit.whattoeat.FoodTypeActivity">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent">
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fruits"
+            android:id="@+id/textFruits" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apples"
+            android:id="@+id/checkApple" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pineapple"
+            android:id="@+id/checkPineapple" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peaches"
+            android:id="@+id/checkPeaches"
+            android:layout_gravity="center_horizontal" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oranges"
+            android:id="@+id/checkOranges"
+            android:layout_gravity="center_horizontal" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView8" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox3" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox2" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView5"
+            android:text="Vegetables"
+            android:id="@+id/textVegetables"
             android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox4"
+            android:text="Broccoli"
+            android:id="@+id/checkBroccoli"
             android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox5"
+            android:text="Spinach"
+            android:id="@+id/checkSpinach"
             android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox6"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView6"
-            android:layout_gravity="center_horizontal" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox7"
-            android:layout_gravity="center_horizontal" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox8"
-            android:layout_gravity="center_horizontal" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox9"
+            android:text="Green Peas"
+            android:id="@+id/checkPeas"
             android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView7" />
+            android:text="Grains"
+            android:id="@+id/textGrains"
+            android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox10" />
+            android:text="Wheat Flour"
+            android:id="@+id/checkW_Flour"
+            android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox11" />
+            android:text="Oatmeal"
+            android:id="@+id/checkOatmeal"
+            android:layout_gravity="center_horizontal" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox12" />
+            android:text="Brown Rice"
+            android:id="@+id/checkBrownRice"
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView9" />
+            android:text="Diary"
+            android:id="@+id/textDiary" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox13" />
+            android:text="Cheese(all kinds)"
+            android:id="@+id/checkCheeseAll" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox14" />
+            android:text="Butter"
+            android:id="@+id/checkButter" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yogurt"
+            android:id="@+id/checkYogurt" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView10" />
+            android:text="Proteins"
+            android:id="@+id/textProteins" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox15" />
+            android:text="Beef"
+            android:id="@+id/checkBeef" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox16" />
+            android:text="Ham"
+            android:id="@+id/checkHam" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sea Food (all)"
+            android:id="@+id/checkSeaFood" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eggs"
+            android:id="@+id/checkEggs" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuts(all)"
+            android:id="@+id/checkNuts" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beans(all)"
+            android:id="@+id/checkBeans" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView11" />
+            android:text="Oils"
+            android:id="@+id/textOils" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
-            android:id="@+id/checkBox17" />
+            android:text="Olive Oil"
+            android:id="@+id/checkOlive" />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
+            android:text=""
             android:id="@+id/checkBox18" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button2"
+            android:id="@+id/FoodChoiceButton"
             android:onClick="saveIngredientChoice"/>
-
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" />
 </RelativeLayout>

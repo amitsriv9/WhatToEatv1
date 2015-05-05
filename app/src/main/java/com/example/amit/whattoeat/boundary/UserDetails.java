@@ -32,7 +32,6 @@ public class UserDetails extends ActionBarActivity {
     private EditText age, gender, ht_feet, ht_inches, weight;
     private RadioGroup radioGender;
     private RadioButton radioGenderIs;
-    Long l_weight, l_feet, l_inches;
     User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class UserDetails extends ActionBarActivity {
                         age = (EditText)findViewById(R.id.editAge);
                         ht_feet = (EditText)findViewById(R.id.editHeightFeet);
                         ht_inches = (EditText)findViewById(R.id.editHeightInches);
-                        gender =  (EditText)findViewById(R.id.personalDetailsButton);
                         weight =  (EditText)findViewById(R.id.editWeight);
                         radioGender = (RadioGroup)findViewById(R.id.radioGroup);
 
@@ -65,7 +63,11 @@ public class UserDetails extends ActionBarActivity {
                                 Long.parseLong(ht_feet.getText().toString()),
                                 Long.parseLong(ht_inches.getText().toString()),
                                 radioGenderIs.getText().toString());
-                        Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
+                        String effingToast = new String("Your BMI is");
+                        String effingBMI = String.valueOf(currentUser.getBMI());
+                        String theToast = effingToast.concat(effingBMI);
+                        CharSequence firstToast = theToast;
+                        Toast.makeText(UserDetails.this,firstToast , Toast.LENGTH_SHORT).show();
                     }
                 }
         );

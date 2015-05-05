@@ -23,10 +23,7 @@ public class User {
     }
 
     double calculate_my_bmi(){return (weight/(12*height_feet + height_feet)^2) * 703;}
+    public double getBMI(){return bmi;}
 
-    saveToFile(){
-        String userinfo = "personalisation";
-        File user  = open(userinfo,);
-
-    }
 }
+

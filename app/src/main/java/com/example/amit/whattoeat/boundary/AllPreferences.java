@@ -1,14 +1,19 @@
 package com.example.amit.whattoeat.boundary;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.amit.whattoeat.R;
@@ -17,8 +22,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AllPreferences extends ActionBarActivity {
+
+
 private Button mSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,23 @@ private Button mSubmit;
                 }
         );
     }
+    /* public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
+
+        public Dialog onCreateDialog(Bundle savedInstance){
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void timeSet(TimePicker view, int hourOfDay, int minute){
+            // set reminnder for the wake up call
+        }
+    }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

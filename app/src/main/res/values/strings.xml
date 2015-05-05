@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_preferences">Preferences</string>
     <string name="submit_toast">Thank You!</string>
-    <string name="welcome_toast">A few more settings</string>
+    <string name="welcome_toast">Your BMI is</string>
     <string name="title_activity_food_type">FoodTypeActivity</string>
 
 </resources>
