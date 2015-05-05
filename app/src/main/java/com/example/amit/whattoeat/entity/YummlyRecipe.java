@@ -19,6 +19,16 @@ public class YummlyRecipe extends Recipe{
     private String id;
     private String smallImageUrls;
     private String sourceDisplayName;
+    private String sourcePageUrl;
+
+    public String getSourcePageUrl() {
+        return sourcePageUrl;
+    }
+
+    public void setSourcePageUrl(String sourcePageUrl) {
+        this.sourcePageUrl = sourcePageUrl;
+    }
+
     private int totalTimeInSeconds;
 
     public YummlyRecipe(String name, List<Ingredient> ingredients){super(name, ingredients);}
@@ -43,6 +53,17 @@ public class YummlyRecipe extends Recipe{
         this.smallImageUrls = smallImageUrls;
         this.sourceDisplayName = sourceDisplayName;
         this.totalTimeInSeconds = totalTimeInSeconds;
+    }
+
+    public String getDominantFlavor(){
+        String flavor = null;
+        if(flavor_salty > 0){flavor = YummlySearchResult.SALTY;}
+        if(flavor_sour > 0) {flavor = YummlySearchResult.SOUR ;}
+        if(flavor_sweet > 0) {flavor = YummlySearchResult.SWEET ;}
+        if(flavor_biter > 0) {flavor = YummlySearchResult.BITTER ;}
+        if(flavor_meaty > 0) {flavor = YummlySearchResult.MEATY ;}
+        if(flavor_piquant > 0) {flavor = YummlySearchResult.PIQUANT ;}
+        return flavor;
     }
 
     public String getCourse() {

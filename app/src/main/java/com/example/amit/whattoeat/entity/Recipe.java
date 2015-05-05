@@ -1,59 +1,45 @@
 package com.example.amit.whattoeat.entity;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * Created by Amit on 4/15/2015.
  */
 public class Recipe {
+    private static final int INGREDIENTS_LENGTH_LIMIT = 200;
     String name;
-    String ingredients;
-    String taste;
-    String meal_time;
-    String id;
+    List<Ingredient> ingredients;
 
-    public Recipe(String name, List<Ingredient> ingredientslist) {
+    public Recipe(String name, List<Ingredient> ingredients) {
         this.name = name;
-        this.ingredients = (String)ingredientslist.get(0).getName();
-    }
-    public Recipe(){}
-
-    public String getRecipeByID(Long recipeId){
-        return id;
+        this.ingredients = ingredients;
     }
 
-    public void setName(String recipeName){
-        name  = recipeName;
-    }
-    public void setIngredients(ArrayList<String> ingredientlist){
-        int listsize = 0;
-        listsize = ingredientlist.size();
-
-
+    public Recipe(String name) {
+        this.name = name;
     }
 
-    public void setTaste(String flavor){
-        taste = flavor;
-    }
-    public void setMealTime(String meal){
-        meal_time  = meal;
-    }
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public String getIngredients(){
+
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public String getTaste(){
-        return taste;
-    }
-    public String getMealTime(){
-        return meal_time;
-    }
-    public String getId(){
-        return id;
+    public String getConcatenatedIngredients(){
+        if(ingredients == null || ingredients.size() == 0) {return null;}
+        StringBuffer sb = new StringBuffer();
+        sb.append(ingredients.get(0).getName());
+        for(int i = 1; i < ingredients.size(); i++){
+            String moreIngredient = ingredients.get(i).getName();
+            if(moreIngredient.length() + sb.length() < INGREDIENTS_LENGTH_LIMIT){
+                sb.append(",");
+                sb.append(moreIngredient);
+            }else {
+                break;
+            }
+        }
+        return sb.toString();
     }
 }

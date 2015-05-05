@@ -84,9 +84,18 @@ public class YummlyGetResult {
         recipe.setRating(rating);
         recipe.setId(id);
         recipe.setSourceDisplayName(name);
+
         try{
             if(attributes != null && attributes.has(YummlyGetResult.CUISINE) && attributes.getJSONArray(YummlyGetResult.CUISINE).length() > 0){
             recipe.setCuisine(attributes.getJSONArray(YummlyGetResult.CUISINE).getString(0));
+            }
+
+            if(images != null){
+                recipe.setSmallImageUrls(images.getJSONObject(0).getJSONObject("imageUrlsBySize").getString("360"));
+            }
+
+            if(sourceSite != null){
+                recipe.setSourcePageUrl(sourceSite.getString("sourceRecipeUrl"));
             }
         }catch (Exception ex){
             ex.printStackTrace();
@@ -94,6 +103,10 @@ public class YummlyGetResult {
         recipe.setTotalTimeInSeconds(totalTime);
 //        recipe.setCourse();
 //        recipe.set
+    }
+
+    public void fillImage(DetailedYummlyRecipe recipe){
+        //todo set image here
     }
 
 

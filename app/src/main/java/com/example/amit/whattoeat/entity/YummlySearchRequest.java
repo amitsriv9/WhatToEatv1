@@ -27,6 +27,15 @@ public class YummlySearchRequest {
     List<Allergy> allergies;
     List<Course> courses;
 
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        for(Ingredient i : ingredients) {
+            sb.append(i);
+        }
+        return sb.toString();
+    }
+
     int pageIndex = 0;
 
     public void nextPage(){
@@ -78,7 +87,8 @@ public class YummlySearchRequest {
         buildAllergies(sb);
         buildCourse(sb);
         buildPageIndex(sb);
-        return sb.toString();
+        call = sb.toString();
+        return call;
     }
 
     private void buildPageIndex(StringBuffer sb) {

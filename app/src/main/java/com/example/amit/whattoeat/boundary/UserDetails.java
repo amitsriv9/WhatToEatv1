@@ -23,6 +23,7 @@ import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import com.example.amit.whattoeat.entity.YummlySearchResult;
 import com.example.amit.whattoeat.utilities.Enums;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,62 +37,35 @@ public class UserDetails extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+//        List<Ingredient> ingredients = new LinkedList<Ingredient>();
+//        ingredients.add(new Ingredient("onion"));
+//
+//        YummlySearchResult result = new YummlySearchResult();
+//        YummlySearchRequest request = new YummlySearchRequest();
+//        request.addIngredient(new Ingredient("onion"));
+//        request.addCourse(Enums.Course.SOUPS);
+//        request.addAllergy(Enums.Allergy.DAIRY);
+//        new YummlyFetchThread(request, result).start(); //todo delete this, just for testing
+//        result.getRecipes();
+
         YummlyGetResult result = new YummlyGetResult();
         Thread getterThread = new YummlyGetThread(new YummlyGetRequest("French-Onion-Soup-1019866"), result);
         getterThread.start();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (Exception ex) {
+//
+//        }
         result.getRecipe();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
 
-        mNext = (Button) findViewById(R.id.personalDetailsButton);
-
-        mNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
+        mNext.setOnClickListener(
+                new View.OnClickListener() {
                     public void onClick(View v) {
-                        age = (EditText)findViewById(R.id.editAge);
-                        ht_feet = (EditText)findViewById(R.id.editHeightFeet);
-                        ht_inches = (EditText)findViewById(R.id.editHeightInches);
-                        weight =  (EditText)findViewById(R.id.editWeight);
-                        radioGender = (RadioGroup)findViewById(R.id.radioGroup);
+                        Toast.makeText(UserDetails.this, R.string.welcome_toast, Toast.LENGTH_SHORT).show();
 
-                        int selectedId = radioGender.getCheckedRadioButtonId();
-                        radioGenderIs = (RadioButton)findViewById(selectedId);
-
-                        //Jun start 1
-                        if(weight.getText().toString().equals("")){
-                            Toast.makeText(UserDetails.this, "Please fill in your weight" , Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if (age.getText().toString().equals("")) {
-                            Toast.makeText(UserDetails.this, "Please fill in your age" , Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if(ht_feet.getText().toString().equals("")){
-                            Toast.makeText(UserDetails.this, "Please fill in your height in feets" , Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if(ht_inches.getText().toString().equals("")){
-                            Toast.makeText(UserDetails.this, "Please fill in your height in inches" , Toast.LENGTH_SHORT).show();
-                            return;
-                        }else if(radioGenderIs == null){
-                            Toast.makeText(UserDetails.this, "Please choose your gender" , Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        //Jun end 1
-
-                        currentUser = new User(
-                                Double.parseDouble(weight.getText().toString()),
-                                Integer.parseInt(age.getText().toString()),
-                                Long.parseLong(ht_feet.getText().toString()),
-                                Long.parseLong(ht_inches.getText().toString()),
-                                radioGenderIs.getText().toString());
-                        String effingToast = new String("Your BMI is");
-                        String effingBMI = String.valueOf(currentUser.getBMI());
-                        String theToast = effingToast.concat(effingBMI);
-                        CharSequence firstToast = theToast;
-                        Toast.makeText(UserDetails.this,firstToast , Toast.LENGTH_SHORT).show();
-
-                        //Jun start 2
-
-                        //Jun end 2
                     }
                 }
         );

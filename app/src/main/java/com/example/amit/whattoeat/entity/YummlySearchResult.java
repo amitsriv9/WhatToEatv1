@@ -5,6 +5,7 @@ import com.example.amit.whattoeat.controller.YummlyIngredientWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class YummlySearchResult {
     JSONArray matches;
     JSONObject criteria;
 
-    public List<Recipe> getRecipes(){
-        List<Recipe> recipes = new LinkedList<Recipe>();
+    public ArrayList<YummlyRecipe> getRecipes(){
+        ArrayList<YummlyRecipe> recipes = new ArrayList<>();
         int count = matches.length();
         for(int i = 0; i < count; i ++) {
             try{
@@ -106,7 +107,7 @@ public class YummlySearchResult {
     private void fillRest(YummlyRecipe newYummlyReci, JSONObject newReci){
         try {
              newYummlyReci.setId(newReci.has(ID) ? newReci.getString(ID) : null);
-             newYummlyReci.setSmallImageUrls(newReci.has(SMALL_IMAGE_URLS) ? newReci.getString(SMALL_IMAGE_URLS) : null);
+             newYummlyReci.setSmallImageUrls(newReci.has(SMALL_IMAGE_URLS) && newReci.getJSONArray(SMALL_IMAGE_URLS).length()>0 ? newReci.getJSONArray(SMALL_IMAGE_URLS).getString(0) : null);
              newYummlyReci.setSourceDisplayName(newReci.has(SOURCE_DISPLAY_NAME) ? newReci.getString(SOURCE_DISPLAY_NAME) : null);
              newYummlyReci.setRating(newReci.has(RATING) ? newReci.getInt(RATING) : -1);
              newYummlyReci.setTotalTimeInSeconds(newReci.has(TOTAL_TIME_IN_SECONDS) ? newReci.getInt(TOTAL_TIME_IN_SECONDS) : -1);
