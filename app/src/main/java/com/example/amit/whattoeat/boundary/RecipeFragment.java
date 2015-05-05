@@ -1,6 +1,7 @@
 package com.example.amit.whattoeat.boundary;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,9 +28,11 @@ import java.io.IOException;
 public class RecipeFragment extends Fragment {
     private DetailedYummlyRecipe recipe;
     private String imgURL = null;
+    public static String sourceURL = null;
     TextView recipeName;
     ImageView recipeImage;
     Bitmap recipeBitmap;
+    Button viewSourceButton;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,7 +94,7 @@ public class RecipeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_recipe_2, container, false);
         if(recipe == null){return v;}
 
-        recipeName = (TextView) v.findViewById(R.id.detailedRecipe_name);
+        recipeName = (TextView) v.findViewById(R.id.detailed_recipe_steps);
         if(recipe.getPreparations() != null && recipe.getPreparations().size() > 0) {
             StringBuffer sb = new StringBuffer();
             for(String s : recipe.getPreparations()){
@@ -105,7 +109,15 @@ public class RecipeFragment extends Fragment {
         }else {
             recipeImage.setImageBitmap(recipeBitmap);
         }
-
+        viewSourceButton = (Button) v.findViewById(R.id.view_source);
+        viewSourceButton.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent i = new Intent(getActivity(), WebPageActivity.class);
+                        startActivity(i);
+                    }
+                }
+        );
         return v;
         //======================================
         // Inflate the layout for this fragment
@@ -185,6 +197,7 @@ public class RecipeFragment extends Fragment {
                 if(imgURL != null) {
                     new GetRecipeImgTask().execute();
                 }
+                sourceURL = recipe.getSourcePageUrl();
 //                public void setData(Data data) {
 //                    this.data = data;
 //                    // The reload fragment code here !

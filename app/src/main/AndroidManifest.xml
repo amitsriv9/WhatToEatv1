@@ -25,11 +25,14 @@
         <activity
             android:name=".boundary.RecipeListActivity"
             android:label="@string/title_activity_recipe_list" >
-
         </activity>
         <activity
             android:name=".boundary.RecipeActivity"
             android:label="@string/title_activity_recipe" >
+        </activity>
+        <activity
+            android:name=".boundary.WebPageActivity"
+            android:label="@string/title_activity_web_page" >
         </activity>
     </application>
 

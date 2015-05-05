@@ -19,6 +19,16 @@ public class YummlyRecipe extends Recipe{
     private String id;
     private String smallImageUrls;
     private String sourceDisplayName;
+    private String sourcePageUrl;
+
+    public String getSourcePageUrl() {
+        return sourcePageUrl;
+    }
+
+    public void setSourcePageUrl(String sourcePageUrl) {
+        this.sourcePageUrl = sourcePageUrl;
+    }
+
     private int totalTimeInSeconds;
 
     public YummlyRecipe(String name, List<Ingredient> ingredients){super(name, ingredients);}

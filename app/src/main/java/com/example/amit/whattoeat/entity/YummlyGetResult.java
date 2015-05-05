@@ -93,6 +93,10 @@ public class YummlyGetResult {
             if(images != null){
                 recipe.setSmallImageUrls(images.getJSONObject(0).getJSONObject("imageUrlsBySize").getString("360"));
             }
+
+            if(sourceSite != null){
+                recipe.setSourcePageUrl(sourceSite.getString("sourceRecipeUrl"));
+            }
         }catch (Exception ex){
             ex.printStackTrace();
         }
