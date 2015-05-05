@@ -9,12 +9,12 @@ public class User {
     // user info to persist here for storage
 
     int age;
-    Long  weight;
+    Double  weight;
     Long  height_feet, height_inches;
     String gender;
     double bmi;
-    public User(Long wt, int age, Long ht_feet, Long ht_inch, String gen){
-        this.age = age;
+    public User(Double wt, int age, Long ht_feet, Long ht_inch, String gen){
+        this.weight = wt;
         this.age = age;
         this.height_feet = ht_feet;
         this.height_inches = ht_inch;
@@ -22,7 +22,7 @@ public class User {
         this.gender = gen;
     }
 
-    double calculate_my_bmi(){return (weight/(12*height_feet + height_feet)^2) * 703;}
+    double calculate_my_bmi(){return (weight.doubleValue()/Math.sqrt(12*height_feet.longValue() + height_inches.longValue())) * 703;} //int value / leads to 0 Jun
     public double getBMI(){return bmi;}
 
 }

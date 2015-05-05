@@ -57,8 +57,28 @@ public class UserDetails extends ActionBarActivity {
 
                         int selectedId = radioGender.getCheckedRadioButtonId();
                         radioGenderIs = (RadioButton)findViewById(selectedId);
+
+                        //Jun start 1
+                        if(weight.getText().toString().equals("")){
+                            Toast.makeText(UserDetails.this, "Please fill in your weight" , Toast.LENGTH_SHORT).show();
+                            return;
+                        }else if (age.getText().toString().equals("")) {
+                            Toast.makeText(UserDetails.this, "Please fill in your age" , Toast.LENGTH_SHORT).show();
+                            return;
+                        }else if(ht_feet.getText().toString().equals("")){
+                            Toast.makeText(UserDetails.this, "Please fill in your height in feets" , Toast.LENGTH_SHORT).show();
+                            return;
+                        }else if(ht_inches.getText().toString().equals("")){
+                            Toast.makeText(UserDetails.this, "Please fill in your height in inches" , Toast.LENGTH_SHORT).show();
+                            return;
+                        }else if(radioGenderIs == null){
+                            Toast.makeText(UserDetails.this, "Please choose your gender" , Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //Jun end 1
+
                         currentUser = new User(
-                                Long.parseLong(weight.getText().toString()),
+                                Double.parseDouble(weight.getText().toString()),
                                 Integer.parseInt(age.getText().toString()),
                                 Long.parseLong(ht_feet.getText().toString()),
                                 Long.parseLong(ht_inches.getText().toString()),
@@ -68,6 +88,10 @@ public class UserDetails extends ActionBarActivity {
                         String theToast = effingToast.concat(effingBMI);
                         CharSequence firstToast = theToast;
                         Toast.makeText(UserDetails.this,firstToast , Toast.LENGTH_SHORT).show();
+
+                        //Jun start 2
+
+                        //Jun end 2
                     }
                 }
         );
