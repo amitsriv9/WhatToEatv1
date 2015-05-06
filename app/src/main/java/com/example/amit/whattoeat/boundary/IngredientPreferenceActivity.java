@@ -70,35 +70,52 @@ public class IngredientPreferenceActivity extends ActionBarActivity {
     }
 
     private ArrayList<String> chooseIngredientsRandomly(ArrayList<String> preferedIngredients) {
-        HashSet<Integer> chosenIndex = new HashSet<Integer>();
         if(preferedIngredients == null) {
             return null;
         }
 
-        if(preferedIngredients.size() <= 3){new ArrayList<String>().addAll(preferedIngredients);}
-
-        Random r = new Random();
-        while (chosenIndex.size() < 3 ){
-            int i = r.nextInt(preferedIngredients.size());
-            if(!chosenIndex.contains(i)) {
-                chosenIndex.add(i);
-            }
-        }
         ArrayList<String> chosen = new ArrayList<String>();
-        for (Integer i : chosenIndex) {
-            chosen.add(preferedIngredients.get(i));
+        if(preferedIngredients.size() <= 3) {
+            chosen.addAll(preferedIngredients);
+        }else {
+            HashSet<Integer> chosenIndex = new HashSet<Integer>();
+            Random r = new Random();
+            while (chosenIndex.size() < 3 ){
+                int i = r.nextInt(preferedIngredients.size());
+                if(!chosenIndex.contains(i)) {
+                    chosenIndex.add(i);
+                }
+            }
+            for (Integer i : chosenIndex) {
+                chosen.add(preferedIngredients.get(i));
+            }
         }
         return chosen;
     }
 
     public void checkboxClicked(View v){
         CheckBox box = (CheckBox) v;
+        String ingredient = escapeText(((CheckBox) v).getText());
         if(box.isChecked()) {
-            preferedIngredients.add(String.valueOf(box.getText()));
+            preferedIngredients.add(ingredient);
         }else{
-            preferedIngredients.remove(String.valueOf(box.getText()));
+            preferedIngredients.remove(ingredient);
         }
     }
+
+    private String escapeText(CharSequence text){
+        if(text == null) return "";
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < text.length(); i ++){
+            if(text.charAt(i) !=  ' '){
+                sb.append(text.charAt(i));
+            }else {
+                sb.append("%20");
+            }
+        }
+        return sb.toString();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

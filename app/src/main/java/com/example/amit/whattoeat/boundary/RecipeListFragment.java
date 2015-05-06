@@ -28,13 +28,13 @@ import com.example.amit.whattoeat.entity.YummlySearchRequest;
 import java.util.ArrayList;
 
 public class RecipeListFragment extends ListFragment {
-    public static YummlySearchRequest request;   //TODO move this to UserDetails or some other class
-
-    {
-        request = new YummlySearchRequest();
-        request.addIngredient(new Ingredient("onion"));
-        request.addIngredient(new Ingredient("beef"));
-    }
+//    public static YummlySearchRequest request;   //TODO move this to UserDetails or some other class
+//
+//    {
+//        request = new YummlySearchRequest();
+//        request.addIngredient(new Ingredient("onion"));
+//        request.addIngredient(new Ingredient("beef"));
+//    }
 
     private ArrayList<YummlyRecipe> recipes = new ArrayList<YummlyRecipe>();
     private ArrayList<String> searchKeywords = new ArrayList<String>();
@@ -145,7 +145,7 @@ public class RecipeListFragment extends ListFragment {
                 return new ArrayList<YummlyRecipe>();
 
 
-            recipes = RecipeLab.getRecipes(RecipeListFragment.request, getActivity().getApplicationContext());//didnt work
+            recipes = RecipeLab.getRecipes(IngredientPreferenceActivity.request, getActivity().getApplicationContext());//didnt work
 //            recipes = RecipeLab.getRecipes(RecipeListFragment.request);//this line works  but doesn't store the result
             return recipes;
 //            String query = PreferenceManager.getDefaultSharedPreferences(activity)
