@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -39,8 +38,6 @@ public class AllPreferences extends ActionBarActivity {
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         Toast.makeText(AllPreferences.this, R.string.submit_toast, Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(AllPreferences.this, RecipeListActivity.class);
-                        startActivity(i);
                     }
                 }
         );

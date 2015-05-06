@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Please choose the ingredients you prefer in each category. We will randomly choose 3 of your preferred ingredients to search for recipes for you"/>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fruits"
+            android:id="@+id/textFruits" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apple"
+            android:id="@+id/checkApple"
+            android:onClick="checkboxClicked"/>
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pineapple"
+            android:id="@+id/checkPineapple" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peach"
+            android:id="@+id/checkPeaches"/>
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orange"
+            android:id="@+id/checkOranges" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Vegetables"
+            android:id="@+id/textVegetables"/>
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Broccoli"
+            android:id="@+id/checkBroccoli" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spinach"
+            android:id="@+id/checkSpinach" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green Peas"
+            android:id="@+id/checkPeas" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Grains"
+            android:id="@+id/textGrains"/>
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wheat Flour"
+            android:id="@+id/checkW_Flour" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oatmeal"
+            android:id="@+id/checkOatmeal"/>
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brown Rice"
+            android:id="@+id/checkBrownRice" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Diary"
+            android:id="@+id/textDiary" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cheese"
+            android:id="@+id/checkCheese" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Butter"
+            android:id="@+id/checkButter" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yogurt"
+            android:id="@+id/checkYogurt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Proteins"
+            android:id="@+id/textProteins" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beef"
+            android:id="@+id/checkBeef" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ham"
+            android:id="@+id/checkHam" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sea Food"
+            android:id="@+id/checkSeaFood" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eggs"
+            android:id="@+id/checkEggs" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuts)"
+            android:id="@+id/checkNuts" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beans"
+            android:id="@+id/checkBeans" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Oils"
+            android:id="@+id/textOils" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Olive Oil"
+            android:id="@+id/checkOlive" />
+
+        <CheckBox
+            android:onClick="checkboxClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peanut Oil"
+            android:id="@+id/checkBox18" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search Recipes"
+            android:id="@+id/search_recipes"
+            android:onClick="saveIngredientChoice"/>
+    </LinearLayout>
+</ScrollView>

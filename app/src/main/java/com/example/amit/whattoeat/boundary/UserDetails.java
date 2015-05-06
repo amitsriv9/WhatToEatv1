@@ -84,7 +84,7 @@ public class UserDetails extends ActionBarActivity {
                                                  Long.parseLong(ht_inches.getText().toString()),
                                                  radioGenderIs.getText().toString());
                                          String effingToast = new String("Your BMI is");
-                                         String effingBMI = String.valueOf(currentUser.getBMI());
+                                         String effingBMI = String.valueOf((int)currentUser.getBMI());
                                          String theToast = effingToast.concat(effingBMI);
                                          CharSequence firstToast = theToast;
                                          Toast.makeText(UserDetails.this,firstToast , Toast.LENGTH_SHORT).show();
